@@ -22,5 +22,5 @@ See `PLAN.md` for the plan. Phase 0 progress:
 4. Certificate Manager: create a Samsung certificate (Samsung account login) for that DUID.
 5. Build and deploy a hello-world .wgt; then continue with Phase 2 of PLAN.md.
 
-## Held back
-- `20261114_150122(0).jpg` (photo of the TV rear label, shows serial number) is NOT committed because the repo is public.
+## Photo
+- `20261114_150122(0).jpg` is the TV rear-label photo (model, serial). Committed on request.
