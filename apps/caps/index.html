@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Caps</title>
+<style>
+  html, body { margin: 0; background: #111; color: #fff; font-family: sans-serif; font-size: 22px; }
+  pre { margin: 20px; white-space: pre-wrap; }
+</style>
+</head>
+<body>
+<pre id="out">starting...</pre>
+<script>
+  var LOG_URL = 'http://192.168.1.129:8765/log';
+  var out = document.getElementById('out');
+  function log(msg) {
+    out.textContent += '\n' + msg;
+    try {
+      var x = new XMLHttpRequest();
+      x.open('POST', LOG_URL, true);
+      x.send(msg);
+    } catch (e) {}
+  }
+  window.onerror = function (m) { log('ERR ' + m); };
+
+  document.addEventListener('keydown', function (e) {
+    log('key ' + e.keyCode);
+    if (e.keyCode === 10009 && window.tizen) tizen.application.getCurrentApplication().exit();
+  });
+
+  log('tizen=' + (typeof tizen) + ' webapis=' + (typeof webapis) + ' b2bapis=' + (typeof b2bapis));
+  log('UA ' + navigator.userAgent);
+
+  // Dev-only: run JS commands queued from the PC and report the result.
+  function poll() {
+    var x = new XMLHttpRequest();
+    x.open('GET', LOG_URL.replace('/log', '/cmd'), true);
+    x.onload = function () {
+      var c = x.responseText;
+      if (c) {
+        try { log('CMD ' + c + ' => ' + String(eval(c))); } catch (e) { log('CMD ' + c + ' !! ' + e.message); }
+      }
+      setTimeout(poll, 1000);
+    };
+    x.onerror = function () { setTimeout(poll, 3000); };
+    x.send();
+  }
+  poll();
+
+  try {
+    var keys = tizen.tvinputdevice.getSupportedKeys();
+    log('KEYS ' + keys.map(function (k) { return k.name + '=' + k.code; }).join(', '));
+  } catch (e) { log('tvinputdevice exception ' + e.message); }
+
+  try {
+    if (window.webapis && webapis.productinfo) {
+      log('product ' + webapis.productinfo.getRealModel() + ' fw ' + webapis.productinfo.getFirmware());
+    }
+  } catch (e) { log('productinfo exception ' + e.message); }
+</script>
+</body>
+</html>

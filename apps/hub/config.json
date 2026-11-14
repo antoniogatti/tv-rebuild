@@ -1,0 +1,18 @@
+{
+  "name": "Antonio",
+  "photos": ["bg/bg1.jpg", "bg/bg2.jpg", "bg/bg3.jpg", "bg/bg4.jpg", "bg/bg5.jpg", "bg/bg6.jpg", "bg/bg7.jpg", "bg/bg8.jpg", "bg/bg9.jpg", "bg/bg10.jpg"],
+  "rows": [
+    {
+      "title": "Guarda",
+      "tiles": [
+        { "label": "Live TV",     "appId": "org.tizen.tv-viewer",     "glyph": "tv",     "colors": ["#2563eb", "#7c3aed"] },
+        { "label": "RaiPlay",     "appId": "5im3FztIhW.RaiTVtizen",   "text": "RaiPlay", "colors": ["#0ea5e9", "#2563eb"] },
+        { "label": "NOW",         "appId": "jcz0WrZYdy.NOWTV",        "text": "NOW",     "colors": ["#14b8a6", "#0f766e"] },
+        { "label": "Netflix",     "appId": "org.tizen.netflix-app",   "text": "NETFLIX", "colors": ["#ef4444", "#7f1d1d"] },
+        { "label": "Prime Video", "appId": "org.tizen.primevideo",    "text": "prime video", "colors": ["#38bdf8", "#1d4ed8"] },
+        { "label": "Disney+",     "appId": "MCmYXNxgcu.DisneyPlus",   "text": "Disney+", "colors": ["#3b82f6", "#1e1b4b"] },
+        { "label": "YouTube",     "appId": "9Ur5IzDKqV.TizenYouTube", "glyph": "play",   "colors": ["#f43f5e", "#9f1239"] }
+      ]
+    }
+  ]
+}

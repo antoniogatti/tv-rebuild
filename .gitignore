@@ -1,0 +1,5 @@
+
+author.p12
+*.p12
+.metadata/
+.vscode/
